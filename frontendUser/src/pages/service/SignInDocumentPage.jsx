@@ -35,8 +35,7 @@ export default function SignInDocumentPage() {
   return (
     <GovukLayout
       serviceName="View and prove your immigration status"
-      serviceUrl="/service/sign-in-document"
-      backLink="/evisa/view-evisa-get-share-code-prove-immigration-status"
+      serviceUrl="/status"
     >
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">

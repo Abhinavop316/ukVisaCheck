@@ -9,7 +9,6 @@ export default function ServiceStartPage() {
     <GovukLayout
       serviceName="View and prove your immigration status"
       serviceUrl="/status"
-      backLink="/evisa/view-evisa-get-share-code-prove-immigration-status"
     >
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">

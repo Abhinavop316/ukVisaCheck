@@ -5,18 +5,45 @@ const adminRoutes = require("./routes/admin.routes");
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Comprehensive CORS setup allowing cross-origin requests from Vercel deployments
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
+  })
+);
+
+// Explicitly handle preflight OPTIONS requests for all routes
+app.options("*", cors());
+
+// Request Body Parsers
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
-// API Routes
-app.use("/api/admin", adminRoutes); // Mounts POST /api/admin/login
-app.use("/api", clientRoutes);     // Mounts /api/clients, /api/get-client, etc.
+// Root Route & Health check
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    service: "UKVI Verification Backend API",
+    message: "API server is live and running.",
+  });
+});
 
-// Health check route
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK", message: "UKVI Backend API is running" });
+});
+
+// API Routes
+app.use("/api/admin", adminRoutes); // Mounts POST /api/admin/login
+app.use("/api", clientRoutes);     // Mounts /api/clients, /api/get-client, /api/send-security-code, etc.
+
+// Fallback 404 handler
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route not found: ${req.method} ${req.originalUrl}`,
+  });
 });
 
 module.exports = app;
