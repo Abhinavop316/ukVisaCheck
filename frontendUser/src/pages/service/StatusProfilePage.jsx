@@ -15,6 +15,15 @@ export default function StatusProfilePage() {
   const [profileData, setProfileData] = useState(currentUser);
   const [error, setError] = useState('');
 
+  // Clear verification session on leaving this route
+  useEffect(() => {
+    return () => {
+      if (signOut) {
+        signOut();
+      }
+    };
+  }, [signOut]);
+
   useEffect(() => {
     // If opened via direct QR scan or URL parameter with docNumber
     if (queryDoc && (!currentUser || currentUser.documentNumber !== queryDoc)) {
@@ -74,7 +83,7 @@ export default function StatusProfilePage() {
     } else if (currentUser) {
       setProfileData(currentUser);
     } else if (!queryDoc) {
-      navigate('/service/sign-in-document');
+      navigate('/service/sign-in-document', { replace: true });
     }
   }, [queryDoc, currentUser, navigate, setCurrentUser]);
 
