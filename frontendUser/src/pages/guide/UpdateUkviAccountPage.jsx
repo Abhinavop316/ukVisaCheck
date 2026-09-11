@@ -21,7 +21,7 @@ export default function UpdateUkviAccountPage() {
 
   const nextStep = {
     title: 'View your eVisa and get a share code to prove your immigration status',
-    path: '/evisa/view-evisa-get-share-code-prove-immigration-status'
+    path: '/service/start'
   };
 
   return (

@@ -143,7 +143,7 @@ export default function ShareCodeResultPage() {
               </Link>
             </p>
             <p className="govuk-body">
-              <Link to="/evisa/view-evisa-get-share-code-prove-immigration-status" className="govuk-link">
+              <Link to="/evisa" className="govuk-link">
                 Return to eVisa guide
               </Link>
             </p>

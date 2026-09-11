@@ -99,7 +99,7 @@ export default function GovukHeader({ serviceName, serviceUrl }) {
                 </h3>
                 <ul className="govuk-header__mega-menu-list">
                   <li><Link to="/evisa">eVisas and online status</Link></li>
-                  <li><Link to="/evisa/view-evisa-get-share-code-prove-immigration-status">View eVisa & share code</Link></li>
+                  <li><Link to="/service/start">View eVisa & share code</Link></li>
                   <li><Link to="/evisa/set-up-ukvi-account">Set up UKVI account</Link></li>
                   <li><Link to="/evisa/update-ukvi-account">Update UKVI details</Link></li>
                   <li><Link to="/status">Prove immigration status service</Link></li>

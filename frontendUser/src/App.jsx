@@ -25,8 +25,8 @@ import NotFoundPage from './pages/NotFoundPage';
 export default function App() {
   return (
     <Routes>
-      {/* Home / Overview Page */}
-      <Route path="/" element={<EvisaOverviewPage />} />
+      {/* Home / Service Start Page (with green Start button to check status/passport) */}
+      <Route path="/" element={<ServiceStartPage />} />
 
       {/* Guide Pages */}
       <Route path="/evisa" element={<EvisaOverviewPage />} />

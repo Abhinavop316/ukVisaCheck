@@ -43,7 +43,7 @@ export default function SearchResultsPage() {
               <ul className="govuk-list govuk-list--bullet">
                 <li>Check your spelling</li>
                 <li>Try broader search terms such as "eVisa", "share code", or "UKVI account"</li>
-                <li><Link to="/evisa/view-evisa-get-share-code-prove-immigration-status">Go directly to View eVisa and get a share code</Link></li>
+                <li><Link to="/service/start">Go directly to View eVisa and check immigration status</Link></li>
               </ul>
             </div>
           )}

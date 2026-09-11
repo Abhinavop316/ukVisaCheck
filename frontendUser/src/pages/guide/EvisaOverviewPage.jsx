@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GovukLayout from '../../components/layout/GovukLayout';
 import GuideContents from '../../components/common/GuideContents';
+import StartButton from '../../components/common/StartButton';
 import Pagination from '../../components/common/Pagination';
 import SidebarRelated from '../../components/common/SidebarRelated';
 import { InsetText } from '../../components/common/GdsElements';
@@ -48,6 +49,12 @@ export default function EvisaOverviewPage() {
             eVisas have replaced physical immigration documents.
           </p>
 
+          <div style={{ margin: '30px 0' }}>
+            <StartButton to="/service/sign-in-document">
+              Sign in to your UKVI account
+            </StartButton>
+          </div>
+
           <p className="govuk-body">
             If you have a biometric residence card (BRC) you may still be able to use it in some situations.
           </p>
@@ -59,7 +66,7 @@ export default function EvisaOverviewPage() {
           <h3 className="govuk-heading-m">How to use your eVisa</h3>
 
           <p className="govuk-body">
-            You can <Link to="/evisa/view-evisa-get-share-code-prove-immigration-status">view your eVisa and get a share code to prove your immigration status</Link>, for example when you get a new job or rent a home.
+            You can <Link to="/service/start">view your eVisa and check your immigration status</Link>, for example when you get a new job or rent a home.
           </p>
 
           <p className="govuk-body">

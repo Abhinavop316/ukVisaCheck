@@ -61,7 +61,7 @@ export default function CheckStatusPage() {
     <GovukLayout
       serviceName="Check an applicant’s right to work or rent"
       serviceUrl="/check-immigration-status"
-      backLink="/evisa/view-evisa-get-share-code-prove-immigration-status"
+      backLink="/service/start"
     >
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">
@@ -354,7 +354,7 @@ export default function CheckStatusPage() {
                 </Link>
               </li>
               <li>
-                <Link to="/evisa/view-evisa-get-share-code-prove-immigration-status" className="govuk-link">
+                <Link to="/service/start" className="govuk-link">
                   Applicant share code guide
                 </Link>
               </li>

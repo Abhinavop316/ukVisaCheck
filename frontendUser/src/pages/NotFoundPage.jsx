@@ -19,8 +19,8 @@ export default function NotFoundPage() {
           </p>
           <ul className="govuk-list govuk-list--bullet">
             <li>
-              <Link to="/evisa/view-evisa-get-share-code-prove-immigration-status" className="govuk-link">
-                View your eVisa and get a share code
+              <Link to="/service/start" className="govuk-link">
+                View your eVisa and sign in to check status
               </Link>
             </li>
             <li>

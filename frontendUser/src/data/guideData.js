@@ -31,7 +31,7 @@ export const guideSteps = [
     id: 'view-and-share',
     number: 5,
     title: 'View your eVisa and get a share code to prove your immigration status',
-    path: '/evisa/view-evisa-get-share-code-prove-immigration-status',
+    path: '/service/start',
     description: 'How to sign in to your UKVI account, view your eVisa, and generate a 90-day share code for employers, landlords, or travel.'
   },
   {
