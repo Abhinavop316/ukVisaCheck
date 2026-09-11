@@ -62,6 +62,8 @@ export default function DocumentDetailsPage() {
       return;
     }
 
+    const cleanDoc = docNumber.trim().toUpperCase();
+
     setIsChecking(true);
     setErrors({});
 
