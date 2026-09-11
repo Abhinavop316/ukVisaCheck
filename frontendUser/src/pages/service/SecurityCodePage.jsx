@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GovukLayout from '../../components/layout/GovukLayout';
 import { useAuth } from '../../context/AuthContext';
@@ -13,6 +13,13 @@ export default function SecurityCodePage() {
   const [error, setError] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
   const navigate = useNavigate();
+
+  // If user lands here without a document number, redirect directly to document-details
+  useEffect(() => {
+    if (!signInFormData.documentNumber) {
+      navigate('/service/document-details', { replace: true });
+    }
+  }, [signInFormData.documentNumber, navigate]);
 
   const handleVerify = async (e) => {
     e.preventDefault();
@@ -45,7 +52,8 @@ export default function SecurityCodePage() {
       return;
     }
 
-    navigate('/service/status-profile');
+    // Replace the security-code entry in browser history so going back goes directly to /service/document-details
+    navigate('/service/status-profile', { replace: true });
   };
 
   const handleResend = async () => {
