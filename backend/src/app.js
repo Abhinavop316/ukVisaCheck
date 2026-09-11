@@ -31,9 +31,11 @@ app.get("/health", (req, res) => {
   res.status(200).json({ status: "OK", message: "UKVI Backend API is running" });
 });
 
-// API Routes
+// API Routes (supports both /api/admin/login and /admin/login, /api/clients and /clients)
 app.use("/api/admin", adminRoutes); // Mounts POST /api/admin/login
+app.use("/admin", adminRoutes);     // Mounts POST /admin/login
 app.use("/api", clientRoutes);     // Mounts /api/clients, /api/get-client, /api/send-security-code, etc.
+app.use("/", clientRoutes);        // Mounts /clients, /get-client, etc.
 
 // Fallback 404 handler
 app.use((req, res) => {
