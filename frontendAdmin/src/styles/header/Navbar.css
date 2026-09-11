@@ -1,0 +1,109 @@
+.site-header {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid var(--nz-border-color);
+  color: var(--nz-navy-dark);
+}
+
+.site-header__inner {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 0.75rem 0;
+}
+
+.site-header__brand-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+
+.site-header__logo-container {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__logo-img {
+  height: 52px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+}
+
+.site-header__title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header__title-main {
+  font-family: 'Outfit', 'Open Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--nz-navy-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.site-header__title-sub {
+  font-size: 0.75rem;
+  color: var(--nz-blue-primary);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.site-header__quicklinks {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.site-header__quicklink {
+  font-size: 0.875rem;
+  color: var(--nz-navy-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-header__quicklink:hover {
+  color: var(--nz-blue-primary);
+  text-decoration: underline;
+}
+
+.site-header__login-btn {
+  background: var(--nz-blue-primary);
+  color: #ffffff;
+  border: 0;
+  border-radius: 4px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease-in-out;
+}
+
+.site-header__login-btn:hover {
+  background: var(--nz-blue-hover);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .site-header__title-sub {
+    display: none;
+  }
+  
+  .site-header__quicklink {
+    display: none;
+  }
+}

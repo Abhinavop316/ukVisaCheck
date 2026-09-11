@@ -1,0 +1,61 @@
+export const sampleProfiles = [
+  {
+    id: 'user-1',
+    documentType: 'passport',
+    documentNumber: 'P12345678',
+    dob: { day: '15', month: '06', year: '1992' },
+    fullName: 'Jane Sarah DOE',
+    statusType: 'Indefinite Leave to Remain (Settlement)',
+    statusCategory: 'Settled Status',
+    validFrom: '14 May 2021',
+    validUntil: 'Continuous (No Expiry)',
+    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+    workRights: 'Allowed to work in the UK. There are no restrictions on the type of work you can do.',
+    rentRights: 'Allowed to rent property in the UK.',
+    publicFunds: 'Allowed access to public funds (benefits and social assistance).',
+    nationalInsuranceNumber: 'QQ 12 34 56 A',
+    nationality: 'Canadian',
+    phone: '+44 7700 900123',
+    email: 'j***e@example.com'
+  },
+  {
+    id: 'user-2',
+    documentType: 'brp',
+    documentNumber: 'RF9876543',
+    dob: { day: '24', month: '11', year: '1995' },
+    fullName: 'Rajesh KUMAR',
+    statusType: 'Skilled Worker Visa',
+    statusCategory: 'Work Visa',
+    validFrom: '01 September 2023',
+    validUntil: '01 September 2028',
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    workRights: 'Allowed to work for the sponsor detailed on your Certificate of Sponsorship (COS) and in supplementary employment subject to Home Office regulations.',
+    rentRights: 'Allowed to rent property in the UK for the duration of this visa.',
+    publicFunds: 'No recourse to public funds.',
+    nationalInsuranceNumber: 'JB 88 44 21 C',
+    nationality: 'Indian',
+    phone: '+44 7700 900456',
+    email: 'r***r@example.com'
+  },
+  {
+    id: 'user-3',
+    documentType: 'national-id',
+    documentNumber: 'ID99887766',
+    dob: { day: '03', month: '02', year: '1998' },
+    fullName: 'Elena ROSTOVA',
+    statusType: 'Student Visa',
+    statusCategory: 'Study Visa',
+    validFrom: '15 September 2024',
+    validUntil: '30 January 2027',
+    photoUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80',
+    workRights: 'Allowed to work maximum 20 hours per week during term time and full-time during vacations.',
+    rentRights: 'Allowed to rent property in the UK.',
+    publicFunds: 'No recourse to public funds.',
+    nationalInsuranceNumber: 'PL 55 66 77 D',
+    nationality: 'Spanish',
+    phone: '+44 7700 900789',
+    email: 'e***a@example.com'
+  }
+];
+
+export const defaultUser = sampleProfiles[0];

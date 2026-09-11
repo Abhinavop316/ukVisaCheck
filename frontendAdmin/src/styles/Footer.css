@@ -1,0 +1,137 @@
+.nz-footer {
+  width: 100%;
+  background: var(--nz-navy-deeper);
+  color: #ffffff;
+  padding: 3rem 0 2rem 0;
+  margin-top: auto;
+  border-top: 4px solid var(--nz-blue-primary);
+}
+
+.nz-footer__inner {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.nz-footer__lookup-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.25rem 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nz-footer__lookup-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.nz-footer__lookup-control {
+  flex: 1;
+}
+
+.nz-footer__select {
+  width: 100%;
+  max-width: 450px;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--nz-navy-dark);
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  outline: none;
+}
+
+.nz-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.nz-footer__col-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+  border-bottom: 2px solid var(--nz-blue-primary);
+  padding-bottom: 0.35rem;
+  display: inline-block;
+}
+
+.nz-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nz-footer__links li {
+  margin-bottom: 0.6rem;
+}
+
+.nz-footer__links a {
+  color: #CBD5E1;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.15s ease;
+}
+
+.nz-footer__links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.nz-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.nz-footer__gov-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nz-footer__gov-svg {
+  width: 220px;
+  height: 40px;
+}
+
+.nz-footer__copyright {
+  font-size: 0.8125rem;
+  color: #94A3B8;
+}
+
+.nz-footer__top-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background 0.15s ease;
+}
+
+.nz-footer__top-btn:hover {
+  background: var(--nz-blue-primary);
+}
+
+.nz-footer__top-icon {
+  width: 14px;
+  height: 14px;
+}

@@ -1,0 +1,22 @@
+/* Custom global overrides for GOV.UK styling */
+@import "./styles/govuk-frontend.css";
+@import "./styles/govuk-header-footer.css";
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
