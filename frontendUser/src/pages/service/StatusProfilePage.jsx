@@ -83,7 +83,7 @@ export default function StatusProfilePage() {
     } else if (currentUser) {
       setProfileData(currentUser);
     } else if (!queryDoc) {
-      navigate('/service/sign-in-document', { replace: true });
+      navigate('/service/document-details', { replace: true });
     }
   }, [queryDoc, currentUser, navigate, setCurrentUser]);
 
@@ -110,7 +110,7 @@ export default function StatusProfilePage() {
             <p className="govuk-body">
               {error || 'No active immigration record found. Please verify the passport details.'}
             </p>
-            <Link to="/service/sign-in-document" className="govuk-button">
+            <Link to="/service/document-details" className="govuk-button">
               Sign In Again
             </Link>
           </div>
@@ -141,7 +141,7 @@ export default function StatusProfilePage() {
     <GovukLayout
       serviceName="View and prove your immigration status"
       serviceUrl="/status"
-      backLink="/status"
+      backLink="/service/document-details"
     >
       {/* Print Controls / Action Bar */}
       <div className="no-print" style={{ marginBottom: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
@@ -159,7 +159,7 @@ export default function StatusProfilePage() {
           type="button"
           onClick={() => {
             if (signOut) signOut();
-            navigate('/service/start');
+            navigate('/service/document-details');
           }}
           className="govuk-link"
           style={{ fontSize: '16px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
