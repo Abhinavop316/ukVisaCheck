@@ -6,7 +6,7 @@ import { ErrorSummary, NotificationBanner } from '../../components/common/GdsEle
 import { sendSecurityCode } from '../../api/client.api';
 
 export default function SecurityCodePage() {
-  const { signInFormData, signIn } = useAuth();
+  const { currentUser, signInFormData, setSignInFormData, signIn } = useAuth();
   const [code, setCode] = useState('');
   const [resentNotification, setResentNotification] = useState(false);
   const [isResending, setIsResending] = useState(false);
@@ -16,6 +16,13 @@ export default function SecurityCodePage() {
 
   const handleVerify = async (e) => {
     e.preventDefault();
+
+    // If user is already authenticated with this document
+    if (currentUser && (currentUser.documentNumber || '').trim().toUpperCase() === (signInFormData.documentNumber || '').trim().toUpperCase()) {
+      navigate('/service/status-profile');
+      return;
+    }
+
     if (!code.trim() || code.trim().length < 6) {
       setError('Enter the 6-digit security code sent to your email');
       return;
@@ -71,6 +78,32 @@ export default function SecurityCodePage() {
     >
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">
+          {currentUser && (
+            <div
+              style={{
+                border: '3px solid #00703c',
+                padding: '16px 20px',
+                marginBottom: '25px',
+                backgroundColor: '#f3f2f1'
+              }}
+            >
+              <h2 className="govuk-heading-s" style={{ margin: '0 0 8px 0', color: '#00703c' }}>
+                Active Verification Session
+              </h2>
+              <p className="govuk-body" style={{ margin: '0 0 12px 0' }}>
+                You have already verified your account as <strong>{currentUser.fullName}</strong> ({currentUser.documentNumber}).
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/service/status-profile')}
+                className="govuk-button"
+                style={{ margin: 0 }}
+              >
+                Go directly to status profile
+              </button>
+            </div>
+          )}
+
           {resentNotification && (
             <NotificationBanner title="Success" success>
               A new 6-digit security code has been sent to your email address.

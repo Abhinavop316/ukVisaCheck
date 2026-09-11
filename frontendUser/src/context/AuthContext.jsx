@@ -10,13 +10,39 @@ export function AuthProvider({ children }) {
     return saved ? JSON.parse(saved) : null;
   });
 
-  const [signInFormData, setSignInFormData] = useState({
-    documentType: 'passport',
-    documentNumber: '',
-    dobDay: '',
-    dobMonth: '',
-    dobYear: '',
-    maskedEmail: '',
+  const [signInFormData, setSignInFormData] = useState(() => {
+    const savedForm = sessionStorage.getItem('ukvi_sign_in_form');
+    if (savedForm) {
+      try {
+        return JSON.parse(savedForm);
+      } catch (e) {
+        // ignore parse error
+      }
+    }
+    const savedUser = localStorage.getItem('ukvi_current_user');
+    if (savedUser) {
+      try {
+        const u = JSON.parse(savedUser);
+        return {
+          documentType: u.documentType || 'passport',
+          documentNumber: u.documentNumber || '',
+          dobDay: u.dob?.day || '',
+          dobMonth: u.dob?.month || '',
+          dobYear: u.dob?.year || '',
+          maskedEmail: u.email || '',
+        };
+      } catch (e) {
+        // ignore parse error
+      }
+    }
+    return {
+      documentType: 'passport',
+      documentNumber: '',
+      dobDay: '',
+      dobMonth: '',
+      dobYear: '',
+      maskedEmail: '',
+    };
   });
 
   const [shareCodes, setShareCodes] = useState(() => {
@@ -37,8 +63,26 @@ export function AuthProvider({ children }) {
   }, [currentUser]);
 
   useEffect(() => {
+    sessionStorage.setItem('ukvi_sign_in_form', JSON.stringify(signInFormData));
+  }, [signInFormData]);
+
+  useEffect(() => {
     localStorage.setItem('ukvi_share_codes', JSON.stringify(shareCodes));
   }, [shareCodes]);
+
+  const signOut = () => {
+    setCurrentUser(null);
+    setSignInFormData({
+      documentType: 'passport',
+      documentNumber: '',
+      dobDay: '',
+      dobMonth: '',
+      dobYear: '',
+      maskedEmail: '',
+    });
+    localStorage.removeItem('ukvi_current_user');
+    sessionStorage.removeItem('ukvi_sign_in_form');
+  };
 
   const updateConsent = (consent) => {
     setCookieConsent(consent);
@@ -201,7 +245,8 @@ export function AuthProvider({ children }) {
         verifyShareCode,
         cookieConsent,
         updateConsent,
-        signIn
+        signIn,
+        signOut
       }}
     >
       {children}

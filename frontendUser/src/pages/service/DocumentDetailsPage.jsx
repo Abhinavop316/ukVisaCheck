@@ -6,11 +6,11 @@ import { ErrorSummary, Details } from '../../components/common/GdsElements';
 import { getClientByQuery, sendSecurityCode } from '../../api/client.api';
 
 export default function DocumentDetailsPage() {
-  const { signInFormData, setSignInFormData } = useAuth();
-  const [docNumber, setDocNumber] = useState(signInFormData.documentNumber || '');
-  const [day, setDay] = useState(signInFormData.dobDay || '');
-  const [month, setMonth] = useState(signInFormData.dobMonth || '');
-  const [year, setYear] = useState(signInFormData.dobYear || '');
+  const { currentUser, signInFormData, setSignInFormData } = useAuth();
+  const [docNumber, setDocNumber] = useState(signInFormData.documentNumber || currentUser?.documentNumber || '');
+  const [day, setDay] = useState(signInFormData.dobDay || currentUser?.dob?.day || '');
+  const [month, setMonth] = useState(signInFormData.dobMonth || currentUser?.dob?.month || '');
+  const [year, setYear] = useState(signInFormData.dobYear || currentUser?.dob?.year || '');
   const [errors, setErrors] = useState({});
   const [isChecking, setIsChecking] = useState(false);
   const navigate = useNavigate();
@@ -62,11 +62,25 @@ export default function DocumentDetailsPage() {
       return;
     }
 
+    const cleanDoc = docNumber.trim().toUpperCase();
+
+    // If user is already authenticated in this session with matching document
+    if (currentUser && (currentUser.documentNumber || '').trim().toUpperCase() === cleanDoc) {
+      setSignInFormData((prev) => ({
+        ...prev,
+        documentNumber: docNumber.trim(),
+        dobDay: day.trim().padStart(2, '0'),
+        dobMonth: month.trim().padStart(2, '0'),
+        dobYear: year.trim(),
+      }));
+      navigate('/service/status-profile');
+      return;
+    }
+
     setIsChecking(true);
     setErrors({});
 
     try {
-      const cleanDoc = docNumber.trim().toUpperCase();
       const client = await getClientByQuery({
         PassportNumber: cleanDoc,
         identNum: cleanDoc,
@@ -115,6 +129,32 @@ export default function DocumentDetailsPage() {
     >
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">
+          {currentUser && (
+            <div
+              style={{
+                border: '3px solid #00703c',
+                padding: '16px 20px',
+                marginBottom: '25px',
+                backgroundColor: '#f3f2f1'
+              }}
+            >
+              <h2 className="govuk-heading-s" style={{ margin: '0 0 8px 0', color: '#00703c' }}>
+                Active Session
+              </h2>
+              <p className="govuk-body" style={{ margin: '0 0 12px 0' }}>
+                You are currently signed in as <strong>{currentUser.fullName}</strong> ({currentUser.documentNumber}).
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/service/status-profile')}
+                className="govuk-button govuk-button--secondary"
+                style={{ margin: 0 }}
+              >
+                Go directly to status profile
+              </button>
+            </div>
+          )}
+
           {errorList.length > 0 && <ErrorSummary errors={errorList} />}
 
           <h1 className="govuk-heading-l">

@@ -5,8 +5,8 @@ import { useAuth } from '../../context/AuthContext';
 import { ErrorSummary } from '../../components/common/GdsElements';
 
 export default function SignInDocumentPage() {
-  const { signInFormData, setSignInFormData } = useAuth();
-  const [selectedDoc, setSelectedDoc] = useState(signInFormData.documentType || 'passport');
+  const { currentUser, signInFormData, setSignInFormData } = useAuth();
+  const [selectedDoc, setSelectedDoc] = useState(signInFormData.documentType || currentUser?.documentType || 'passport');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -39,6 +39,32 @@ export default function SignInDocumentPage() {
     >
       <div className="govuk-grid-row">
         <div className="govuk-grid-column-two-thirds">
+          {currentUser && (
+            <div
+              style={{
+                border: '3px solid #00703c',
+                padding: '16px 20px',
+                marginBottom: '25px',
+                backgroundColor: '#f3f2f1'
+              }}
+            >
+              <h2 className="govuk-heading-s" style={{ margin: '0 0 8px 0', color: '#00703c' }}>
+                Active Session
+              </h2>
+              <p className="govuk-body" style={{ margin: '0 0 12px 0' }}>
+                You are currently signed in as <strong>{currentUser.fullName}</strong> ({currentUser.documentNumber}).
+              </p>
+              <button
+                type="button"
+                onClick={() => navigate('/service/status-profile')}
+                className="govuk-button govuk-button--secondary"
+                style={{ margin: 0 }}
+              >
+                Go directly to status profile
+              </button>
+            </div>
+          )}
+
           {error && <ErrorSummary errors={[{ field: 'document-radios', message: error }]} />}
 
           <form onSubmit={handleContinue}>

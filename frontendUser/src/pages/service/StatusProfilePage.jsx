@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { getClientByQuery } from '../../api/client.api';
 
 export default function StatusProfilePage() {
-  const { currentUser, setCurrentUser } = useAuth();
+  const { currentUser, setCurrentUser, signOut } = useAuth();
   const { docNumber } = useParams();
   const [searchParams] = useSearchParams();
   const queryDoc = docNumber || searchParams.get('doc');
@@ -146,9 +146,17 @@ export default function StatusProfilePage() {
             Print
           </button>
         </div>
-        <Link to="/status" className="govuk-link" style={{ fontSize: '16px' }}>
+        <button
+          type="button"
+          onClick={() => {
+            if (signOut) signOut();
+            navigate('/service/start');
+          }}
+          className="govuk-link"
+          style={{ fontSize: '16px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+        >
           Sign out
-        </Link>
+        </button>
       </div>
 
       {/* Official eVisa Printable Layout matching GOV.UK Format */}
