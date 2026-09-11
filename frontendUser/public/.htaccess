@@ -6,13 +6,13 @@
   RewriteCond %{REQUEST_URI} ^/api [NC]
   RewriteRule ^api/(.*)$ http://127.0.0.1:3000/api/$1 [P,L]
 
-  # Serve existing static assets directly
+  # Serve existing static assets directly (css, js, svg, images)
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Rewrite all other routes to index.html for React SPA
+  # Rewrite all other frontend routes to index.html for React SPA
   RewriteRule . /index.html [L]
 </IfModule>
 
