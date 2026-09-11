@@ -111,31 +111,29 @@ export default function GovukFooter() {
                 , except where otherwise stated
               </span>
             </div>
+            <div style={{ marginTop: '10px', fontSize: '13px', color: '#505a5f' }}>
+              UK Visas and Immigration Online Verification Portal. For official application status and caseworker services.
+            </div>
           </div>
 
           <div className="govuk-footer__meta-item">
-            <a
-              className="govuk-footer__copyright-logo"
-              href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
-              target="_blank"
-            >
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px' }}>
               <svg
                 aria-hidden="true"
-                focusable="false"
-                className="govuk-footer__licence-logo"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 125 102"
-                height="34"
-                width="42"
-                fill="currentColor"
+                viewBox="0 0 32 32"
+                height="30"
+                width="30"
+                fill="#505a5f"
               >
-                <path d="M65.3 15.4c-4.4 0-8.8.7-13 2.1-1.3-4.5-4.4-8.3-8.6-10.6C39.4 4.5 34.3 4 29.4 5.3c-4.9 1.4-9.1 4.5-12 8.8-2.9 4.3-4.1 9.5-3.5 14.7.7 5.1 3.2 9.8 7.1 13.1-3.6 4.4-5.6 9.9-5.6 15.6 0 7.4 3.4 14.4 9.3 18.9 5.8 4.6 13.3 6.9 20.8 6.5 4.3-.2 8.5-1.4 12.3-3.4 3.9 2.1 8.2 3.3 12.6 3.5 7.5.3 15-2 20.8-6.5 5.9-4.6 9.3-11.6 9.3-18.9 0-5.7-2-11.2-5.6-15.6 3.9-3.3 6.4-8 7.1-13.1.6-5.2-.6-10.4-3.5-14.7-2.9-4.3-7.1-7.4-12-8.8-4.9-1.3-10-.8-14.3 1.6-4.2 2.3-7.3 6.1-8.6 10.6-4.2-1.4-8.6-2.1-13-2.1z"></path>
+                <path d="M16 3L5 7v9c0 7.2 4.7 13.9 11 15.6 6.3-1.7 11-8.4 11-15.6V7l-11-4zm0 3.2l8 2.9v6.9c0 5.4-3.5 10.5-8 12-4.5-1.5-8-6.6-8-12V9.1l8-2.9z" />
+                <path d="M14.2 18.3l-3.2-3.2 1.4-1.4 1.8 1.8 4.8-4.8 1.4 1.4-6.2 6.2z" />
               </svg>
-              <span>© Crown copyright</span>
-            </a>
+              <span style={{ fontSize: '13px', color: '#505a5f' }}>© UKVI Verification Portal</span>
+            </div>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+

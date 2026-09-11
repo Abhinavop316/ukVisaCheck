@@ -62,15 +62,25 @@ export default function GovukFooter() {
                 , except where otherwise stated
               </span>
             </div>
+            <div style={{ marginTop: '10px', fontSize: '13px', color: '#505a5f' }}>
+              UK Visas and Immigration Caseworker Portal. Internal authorized administration service.
+            </div>
           </div>
 
           <div className="govuk-footer__meta-item">
-            <a
-              className="govuk-footer__copyright-logo"
-              href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
-            >
-              © Crown copyright
-            </a>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px' }}>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 32 32"
+                height="30"
+                width="30"
+                fill="#505a5f"
+              >
+                <path d="M16 3L5 7v9c0 7.2 4.7 13.9 11 15.6 6.3-1.7 11-8.4 11-15.6V7l-11-4zm0 3.2l8 2.9v6.9c0 5.4-3.5 10.5-8 12-4.5-1.5-8-6.6-8-12V9.1l8-2.9z" />
+                <path d="M14.2 18.3l-3.2-3.2 1.4-1.4 1.8 1.8 4.8-4.8 1.4 1.4-6.2 6.2z" />
+              </svg>
+              <span style={{ fontSize: '13px', color: '#505a5f' }}>© UKVI Caseworker Portal</span>
+            </div>
           </div>
         </div>
       </div>
