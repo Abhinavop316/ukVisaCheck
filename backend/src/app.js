@@ -5,7 +5,7 @@ const adminRoutes = require("./routes/admin.routes");
 
 const app = express();
 
-// Comprehensive CORS setup allowing cross-origin requests from Vercel deployments
+// Comprehensive CORS setup allowing cross-origin requests from Vercel/Hostinger deployments
 app.use(
   cors({
     origin: "*",
@@ -13,9 +13,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
   })
 );
-
-// Explicitly handle preflight OPTIONS requests for all routes
-app.options("*", cors());
 
 // Request Body Parsers
 app.use(express.json({ limit: "50mb" }));
