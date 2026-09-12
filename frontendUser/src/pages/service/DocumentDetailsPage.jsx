@@ -76,9 +76,28 @@ export default function DocumentDetailsPage() {
       if (!client || (!client.FullName && !client.PassportNumber)) {
         setIsChecking(false);
         setErrors({
-          global: 'No application record found with these details in the UKVI database. Please check your passport number and date of birth.',
+          docNumber: 'No application record found with this passport number in the UKVI database.',
         });
         return;
+      }
+
+      // Verify Date of Birth match if available in client record
+      if (client.DOB) {
+        const parts = client.DOB.split('T')[0].split('-');
+        if (parts.length === 3) {
+          const [dbYear, dbMonth, dbDay] = parts;
+          if (
+            String(Number(year)) !== String(Number(dbYear)) ||
+            String(Number(month)) !== String(Number(dbMonth)) ||
+            String(Number(day)) !== String(Number(dbDay))
+          ) {
+            setIsChecking(false);
+            setErrors({
+              dob: 'The date of birth entered does not match our records for this passport number.',
+            });
+            return;
+          }
+        }
       }
 
       // Send 6-digit security code to applicant's email using Resend
@@ -98,7 +117,7 @@ export default function DocumentDetailsPage() {
     } catch (err) {
       setIsChecking(false);
       setErrors({
-        global: err.message || 'No application record found with these details in the UKVI database. Please check your passport number and date of birth.',
+        global: err.message || 'Could not verify application record. Please try again.',
       });
     }
   };
