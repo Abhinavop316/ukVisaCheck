@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const getBaseUrl = () => {
-  let url = (import.meta.env.VITE_API_URL || "https://api.ukvisacheck.in/api").trim();
+  let url = (
+    import.meta.env.VITE_API_URL || "http://localhost:3000/api"
+  ).trim();
   
   if (!url.startsWith("http://") && !url.startsWith("https://")) {
     url = `https://${url}`;
