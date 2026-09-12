@@ -6,27 +6,16 @@ import EditAppplication from "./pages/EditAppplication";
 
 function App() {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
-    return localStorage.getItem("adminAuthToken") ? true : false;
+    return sessionStorage.getItem("adminAuthToken") ? true : false;
   });
 
-  // Sync login status across multiple tabs
-  useEffect(() => {
-    const handleStorageChange = (e) => {
-      if (e.key === "adminAuthToken") {
-        setIsAdminLoggedIn(e.newValue ? true : false);
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
-
   const handleLoginSuccess = (token) => {
-    localStorage.setItem("adminAuthToken", token || "authenticated");
+    sessionStorage.setItem("adminAuthToken", token || "authenticated");
     setIsAdminLoggedIn(true);
   };
 
   const handleLogout = () => {
+    sessionStorage.removeItem("adminAuthToken");
     localStorage.removeItem("adminAuthToken");
     setIsAdminLoggedIn(false);
   };
