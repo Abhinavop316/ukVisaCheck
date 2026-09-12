@@ -2,6 +2,11 @@ import axios from "axios";
 
 const getBaseUrl = () => {
   let url = (import.meta.env.VITE_API_URL || "https://api.ukvisacheck.in/api").trim();
+  
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    url = `https://${url}`;
+  }
+
   if (url.endsWith("/")) {
     url = url.slice(0, -1);
   }
